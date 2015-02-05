@@ -70,7 +70,7 @@ data Profile = Profile
              , _profilePhone              :: Maybe Text
              , _profileImage24            :: URL
              , _profileImage32            :: URL
-             , _profileImage48            :: URL
+             , _profileImage48            :: Maybe URL
              , _profileImage72            :: URL
              , _profileImage192           :: URL
              } deriving (Show)
@@ -86,6 +86,6 @@ instance FromJSON Profile where
                   Profile <$> vm "first_name" <*> vm "last_name" <*> vm "real_name"
                           <*> vm "real_name_normalized" <*> vm "title" <*> vm "email"
                           <*> vm "skype" <*> vm "phone" <*> v "image_24" <*> v "image_32"
-                          <*> v "image_48" <*> v "image_72" <*> v "image_192")
+                          <*> vm "image_48" <*> v "image_72" <*> v "image_192")
 
 type Username = Text
